@@ -15,6 +15,12 @@ class CreatePacoteTable extends Migration
     {
         Schema::create('pacote', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('description');
+            $table->string('image');
+            $table->decimal('price');
+            $table->date('date_start');
+            $table->date('date_end');
             $table->timestamps();
         });
     }
