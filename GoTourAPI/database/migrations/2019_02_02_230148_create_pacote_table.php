@@ -18,6 +18,8 @@ class CreatePacoteTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('image');
+            $table->string('site');
+            $table->string('phone');
             $table->decimal('price');
             $table->date('date_start');
             $table->date('date_end');
