@@ -14,7 +14,7 @@ class Pacote extends Model {
         'date_start',
         'date_end',
         'description',
-        'imagem',
+        'image',
         'site',
         'phone',
     ];
