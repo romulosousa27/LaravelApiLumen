@@ -11,10 +11,15 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
+    public function register() {
+        
+        $this->app->bind(
+            'App\Repositories\PacoteRepositoryInterface',
+            'App\Repositories\PacoteRepositoryEloquent'
+        );
+
         if ($this->app->environment() == 'local') {
             $this->app->register('Wn\Generators\CommandsServiceProvider');
-        }
+        }      
     }
 }
