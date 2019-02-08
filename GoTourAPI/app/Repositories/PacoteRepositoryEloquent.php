@@ -14,14 +14,14 @@ class PacoteRepositoryEloquent implements PacoteRepositoryInterface {
         $this->pacote = $pacote;
     }
 
-    public function searchAllPacotes() {
+    public function searchPacotes() {
         
         return $this->pacote->select(
             'id', 'name', 'price', 'date_start', 'date_end', 'image'
         )->get();
     }
 
-    public function searchPacote() {
+    public function searchPacote(int $id) {
         
         return $this->pacote->select(
             'id', 'name', 'price', 'date_start', 'date_end', 'image'
