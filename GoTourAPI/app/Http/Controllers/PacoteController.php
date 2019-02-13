@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pacote;
 use App\Services\PacoteService;
+use Illuminate\Http\Request;
 
 class PacoteController extends Controller {
 
@@ -24,8 +25,18 @@ class PacoteController extends Controller {
         return $this->service->searchAllPacotes();
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function show($id) {
 
         return $this->service->showPacote($id);
+    }
+
+
+    public function store(Request $request) {
+
+        return $this->service->storePacote($request->all());
     }
 }

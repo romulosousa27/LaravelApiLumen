@@ -44,4 +44,9 @@ class PacoteService {
 
         return $this->repository->searchPacote($id);
     }
+
+    public function storePacote(Request $request) {
+
+        return $this->repository->createPacote($request->all());
+    }
 }

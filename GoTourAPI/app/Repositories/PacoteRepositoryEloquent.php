@@ -6,6 +6,10 @@ use App\Models\Pacote;
 use App\Repositories\PacoteRepositoryInterface;
 use Illuminate\Http\Request;
 
+/**
+ * Class PacoteRepositoryEloquent
+ * @package App\Repositories
+ */
 class PacoteRepositoryEloquent implements PacoteRepositoryInterface {
 
     private $pacote;
