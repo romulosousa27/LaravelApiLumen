@@ -16,4 +16,5 @@ $router->get('/', function () use ($router) {
 });
 
 
-$router->get('/pacotes','PacoteController@index'); 
+$router->get('/pacotes','PacoteController@index');
+$router->get('/pacote/{id}' , 'PacoteController@show');

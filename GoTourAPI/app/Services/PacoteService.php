@@ -39,4 +39,9 @@ class PacoteService {
             return array();
         }
     }
+
+    public function showPacote($id) {
+
+        return $this->repository->searchPacote($id);
+    }
 }

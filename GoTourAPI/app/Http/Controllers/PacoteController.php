@@ -23,4 +23,9 @@ class PacoteController extends Controller {
     public function index() {
         return $this->service->searchAllPacotes();
     }
+
+    public function show($id) {
+
+        return $this->service->showPacote($id);
+    }
 }
