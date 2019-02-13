@@ -47,6 +47,6 @@ class PacoteService {
 
     public function storePacote(Request $request) {
 
-        return $this->repository->createPacote($request->all());
+        return $this->repository->createPacote($request);
     }
 }

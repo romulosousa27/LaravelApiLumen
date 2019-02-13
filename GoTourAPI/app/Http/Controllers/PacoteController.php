@@ -37,6 +37,6 @@ class PacoteController extends Controller {
 
     public function store(Request $request) {
 
-        return $this->service->storePacote($request->all());
+        return $this->service->storePacote($request);
     }
 }
