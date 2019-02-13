@@ -3,31 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pacote;
-use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
-use App\Repositories\PacoteRepositoryInterface;
-use App\Repositories\PacoteRepositoryEloquent;
+use App\Services\PacoteService;
 
 class PacoteController extends Controller {
 
-    private $repository;
+    private $service;
 
     /**
-     *
-     * @param PacoteRepositoryInterface $repository
+     * PacoteController constructor.
+     * @param PacoteService $service
      */
-    public function __construct(PacoteRepositoryInterface $repository) {
-        
-        $this->repository = $repository;
+    public function __construct(PacoteService $service) {
+        $this->service = $service;
     }
 
     /**
      * Retorna todos os Pacotes
-     *
-     * @return void
      */
     public function index() {
-        
-        return $this->repository->searchPacotes();
+        return $this->service->searchAllPacotes();
     }
 }
