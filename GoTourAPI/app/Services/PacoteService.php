@@ -9,7 +9,8 @@ use App\Repositories\PacoteRepositoryInterface;
  * Class PacoteService
  * @package App\Services
  */
-class PacoteService {
+class PacoteService
+{
 
     /**
      * @var PacoteRepositoryInterface
@@ -20,7 +21,8 @@ class PacoteService {
      * PacoteService constructor.
      * @param PacoteRepositoryInterface $repository
      */
-    public function __construct(PacoteRepositoryInterface $repository) {
+    public function __construct(PacoteRepositoryInterface $repository)
+    {
 
         $this->repository = $repository;
     }
@@ -28,24 +30,26 @@ class PacoteService {
     /**
      * @return array
      */
-    public function searchAllPacotes() {
+    public function searchAllPacotes()
+    {
 
         $pacotes = $this->repository->searchPacotes();
 
         if (count($pacotes) > 0) {
             return $pacotes;
-        }
-        else{
+        } else {
             return array();
         }
     }
 
-    public function showPacote($id) {
+    public function showPacote($id)
+    {
 
         return $this->repository->searchPacote($id);
     }
 
-    public function storePacote(Request $request) {
+    public function storePacote(Request $request)
+    {
 
         return $this->repository->createPacote($request);
     }

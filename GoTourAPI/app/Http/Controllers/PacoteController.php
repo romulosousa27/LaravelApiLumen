@@ -6,7 +6,8 @@ use App\Models\Pacote;
 use App\Services\PacoteService;
 use Illuminate\Http\Request;
 
-class PacoteController extends Controller {
+class PacoteController extends Controller
+{
 
     private $service;
 
@@ -14,14 +15,16 @@ class PacoteController extends Controller {
      * PacoteController constructor.
      * @param PacoteService $service
      */
-    public function __construct(PacoteService $service) {
+    public function __construct(PacoteService $service)
+    {
         $this->service = $service;
     }
 
     /**
      * Retorna todos os Pacotes
      */
-    public function index() {
+    public function index()
+    {
         return $this->service->searchAllPacotes();
     }
 
@@ -29,13 +32,15 @@ class PacoteController extends Controller {
      * @param $id
      * @return mixed
      */
-    public function show($id) {
+    public function show($id)
+    {
 
         return $this->service->showPacote($id);
     }
 
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         return $this->service->storePacote($request);
     }
