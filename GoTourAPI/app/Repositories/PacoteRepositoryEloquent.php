@@ -50,8 +50,8 @@ class PacoteRepositoryEloquent implements PacoteRepositoryInterface
 
     public function deleteRepository(int $id)
     {
-        $pacote = Pacote::find($id);
+        $pacote = $this->pacote->find($id);
 
-        return $this->pacote->delete($pacote);
+        return $pacote->delete();
     }
 }

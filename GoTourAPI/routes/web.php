@@ -20,3 +20,4 @@ $router->get('/pacotes','PacoteController@index');
 $router->get('/pacote/{id}' , 'PacoteController@show');
 $router->post('/pacote' , 'PacoteController@store');
 $router->put('/pacote/{id}', 'PacoteController@edit');
+$router->delete('/pacote/{id}', 'PacoteController@destroy');

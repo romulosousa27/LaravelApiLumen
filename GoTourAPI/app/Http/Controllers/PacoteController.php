@@ -60,4 +60,9 @@ class PacoteController extends Controller
     {
         return $this->service->editService($request, $id);
     }
+
+    public function destroy(int $id)
+    {
+        return $this->service->deleteService($id);
+    }
 }

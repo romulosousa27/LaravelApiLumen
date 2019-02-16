@@ -54,4 +54,9 @@ class PacoteService
     {
         return $this->repository->editRepository($id, $request);
     }
+
+    public function deleteService(int $id)
+    {
+        return $this->repository->deleteRepository($id);
+    }
 }
