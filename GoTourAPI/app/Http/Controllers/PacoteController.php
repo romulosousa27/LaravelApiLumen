@@ -38,6 +38,10 @@ class PacoteController extends Controller
         return $this->service->showService($id);
     }
 
+    public function detail(int $id)
+    {
+        return $this->service->detailService($id);
+    }
     /**
      * Cria um novo registro
      *

@@ -4,8 +4,10 @@ namespace App\Services;
 
 use Illuminate\Http\Request;
 use App\Repositories\PacoteRepositoryEloquent;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Database\QueryException;
+use App\Requests\ValidatePacote;
 
 /**
  * Class PacoteService
@@ -68,16 +70,42 @@ class PacoteService
 
     public function storeService(Request $request)
     {
-        return $this->repository->createRepository($request);
+        $validate = Validator::make(
+            $request->all(),
+            ValidatePacote::RULES,
+            ValidatePacote::MESSAGES,
+        );
+
+        try {
+            $pacote = $this->repository->createRepository($request);
+            return response()->json($pacote, Response::HTTP_CREATED);
+        }
+        catch (QueryException $e) {
+            return response()->json(['error' => 'Erro de Conexão com o Banco de Dados'], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     public function editService(Request $request, int $id)
     {
-        return $this->repository->editRepository($id, $request);
+        try{
+            $pacote = $this->repository->editRepository($id, $request);
+            return response()->json($pacote, Response::HTTP_ACCEPTED);
+        }
+        catch (QueryException $e) {
+            return response()->json(['error' => 'Erro de Conexão com o Banco de Dados'], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 
     public function deleteService(int $id)
     {
-        return $this->repository->deleteRepository($id);
+        try{
+            $pacote = $this->repository->deleteRepository($id);
+            return response()->json(null, Response::HTTP_OK);
+        }
+        catch (QueryException $e) {
+            return response()->json(['error' => 'Erro de Conexão com o Banco de Dados'], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
     }
 }
