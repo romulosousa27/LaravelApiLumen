@@ -9,13 +9,13 @@ interface PacoteRepositoryInterface {
     
     public function indexRepository();
 
-    public function searchPacote(int $id);
+    public function showRepository(int $id);
 
-    public function searchDetailsPacote(int $id);
+    public function detailsRepository(int $id);
 
-    public function createPacote(Request $request);
+    public function createRepository(Request $request);
 
-    public function editPacote(int $id, Request $request);
+    public function editRepository(int $id, Request $request);
 
-    public function deletePacote(int $id);
+    public function deleteRepository(int $id);
 }

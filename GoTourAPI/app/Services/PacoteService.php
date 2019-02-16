@@ -42,16 +42,16 @@ class PacoteService
 
     public function showService($id)
     {
-        return $this->repository->searchPacote($id);
+        return $this->repository->showRepository($id);
     }
 
     public function storeService(Request $request)
     {
-        return $this->repository->createPacote($request);
+        return $this->repository->createRepository($request);
     }
 
     public function editService(Request $request, int $id)
     {
-        return $this->repository->editPacote($id, $request);
+        return $this->repository->editRepository($id, $request);
     }
 }

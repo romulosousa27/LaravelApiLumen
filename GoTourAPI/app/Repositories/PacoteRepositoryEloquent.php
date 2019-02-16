@@ -26,29 +26,29 @@ class PacoteRepositoryEloquent implements PacoteRepositoryInterface
         )->get();
     }
 
-    public function searchPacote(int $id)
+    public function showRepository(int $id)
     {
         return $this->pacote->select(
             'id', 'name', 'price', 'date_start', 'date_end', 'image'
         )->where('id', $id)->get();
     }
 
-    public function searchDetailsPacote(int $id)
+    public function detailsRepository(int $id)
     {
         return $this->pacote->find($id);
     }
 
-    public function createPacote(Request $request)
+    public function createRepository(Request $request)
     {
         return $this->pacote->create($request->all());
     }
 
-    public function editPacote(int $id, Request $request)
+    public function editRepository(int $id, Request $request)
     {
         return $this->pacote->where('id', $id)->update($request->all());
     }
 
-    public function deletePacote(int $id)
+    public function deleteRepository(int $id)
     {
         $pacote = Pacote::find($id);
 
