@@ -31,7 +31,7 @@ class PacoteService
      */
     public function indexService()
     {
-        $pacotes = $this->repository->searchPacotes();
+        $pacotes = $this->repository->indexRepository();
 
         if (count($pacotes) > 0) {
             return $pacotes;
@@ -40,12 +40,12 @@ class PacoteService
         }
     }
 
-    public function showPacote($id)
+    public function showService($id)
     {
         return $this->repository->searchPacote($id);
     }
 
-    public function storePacote(Request $request)
+    public function storeService(Request $request)
     {
         return $this->repository->createPacote($request);
     }

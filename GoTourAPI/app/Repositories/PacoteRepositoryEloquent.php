@@ -19,7 +19,7 @@ class PacoteRepositoryEloquent implements PacoteRepositoryInterface
         $this->pacote = $pacote;
     }
 
-    public function searchPacotes()
+    public function indexRepository()
     {
         return $this->pacote->select(
             'id', 'name', 'price', 'date_start', 'date_end', 'image'

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 interface PacoteRepositoryInterface {
 
     
-    public function searchPacotes();
+    public function indexRepository();
 
     public function searchPacote(int $id);
 

@@ -35,7 +35,7 @@ class PacoteController extends Controller
      */
     public function show($id)
     {
-        return $this->service->showPacote($id);
+        return $this->service->showService($id);
     }
 
     /**
@@ -46,7 +46,7 @@ class PacoteController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->service->storePacote($request);
+        return $this->service->storeService($request);
     }
 
     /**
