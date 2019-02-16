@@ -65,7 +65,31 @@ class PacoteService
         } catch (QueryException $e) {
             return response()->json(['error' => 'Erro de Conexão com o Banco de Dados'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
+    }
 
+    public function detailService($id)
+    {
+        $pacote = $this->repository->detailsRepository($id);
+
+        // verificaçao se o pacote existe
+        if (is_null($pacote)) {
+            return response()->json([], Response::HTTP_NOT_FOUND);
+        } else {
+            return response()->json([
+                'id' => $pacote->id,
+                'description' => $pacote->description,
+                'image' => $pacote->image,
+                'site' => $pacote->site,
+                'phone' => $pacote->phone,
+                'pacote' => [
+                    'id' => $pacote->id,
+                    'name' => $pacote->name,
+                    'data_start' => $pacote->data_start,
+                    'date_end' => $pacote->date_end,
+                    'price' => $pacote->price
+                ]
+            ]);
+        }
     }
 
     public function storeService(Request $request)
@@ -79,8 +103,7 @@ class PacoteService
         try {
             $pacote = $this->repository->createRepository($request);
             return response()->json($pacote, Response::HTTP_CREATED);
-        }
-        catch (QueryException $e) {
+        } catch (QueryException $e) {
             return response()->json(['error' => 'Erro de Conexão com o Banco de Dados'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
@@ -88,22 +111,20 @@ class PacoteService
 
     public function editService(Request $request, int $id)
     {
-        try{
+        try {
             $pacote = $this->repository->editRepository($id, $request);
             return response()->json($pacote, Response::HTTP_ACCEPTED);
-        }
-        catch (QueryException $e) {
+        } catch (QueryException $e) {
             return response()->json(['error' => 'Erro de Conexão com o Banco de Dados'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
     public function deleteService(int $id)
     {
-        try{
+        try {
             $pacote = $this->repository->deleteRepository($id);
             return response()->json(null, Response::HTTP_OK);
-        }
-        catch (QueryException $e) {
+        } catch (QueryException $e) {
             return response()->json(['error' => 'Erro de Conexão com o Banco de Dados'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 

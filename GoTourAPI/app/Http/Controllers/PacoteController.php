@@ -38,6 +38,9 @@ class PacoteController extends Controller
         return $this->service->showService($id);
     }
 
+    /**
+     * @param int $id
+     */
     public function detail(int $id)
     {
         return $this->service->detailService($id);
