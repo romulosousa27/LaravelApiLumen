@@ -4,6 +4,8 @@ namespace App\Services;
 
 use Illuminate\Http\Request;
 use App\Repositories\PacoteRepositoryEloquent;
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Database\QueryException;
 
 /**
  * Class PacoteService
@@ -27,22 +29,41 @@ class PacoteService
     }
 
     /**
-     * @return array
+     * @return array|\Illuminate\Http\JsonResponse
      */
     public function indexService()
     {
-        $pacotes = $this->repository->indexRepository();
+        try {
+            $pacotes = $this->repository->indexRepository();
 
-        if (count($pacotes) > 0) {
-            return $pacotes;
-        } else {
-            return array();
+            if (count($pacotes) > 0) {
+                return response()->json($pacotes, Response::HTTP_OK);
+            } else {
+                return array();
+            }
+        } catch (QueryException $e) {
+            return response()->json(['error' => 'Erro de Conexão com o Banco de Dados'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function showService($id)
     {
-        return $this->repository->showRepository($id);
+        try {
+            $pacote = $this->repository->showRepository($id);
+
+            if (count($pacote) > 0) {
+                return response()->json($pacote, Response::HTTP_OK);
+            } else {
+                return response()->json(null, Response::HTTP_NOT_FOUND);
+            }
+        } catch (QueryException $e) {
+            return response()->json(['error' => 'Erro de Conexão com o Banco de Dados'], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
     }
 
     public function storeService(Request $request)
