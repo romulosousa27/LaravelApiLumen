@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Http\Request;
-use App\Repositories\PacoteRepositoryInterface;
+use App\Repositories\PacoteRepositoryEloquent;
 
 /**
  * Class PacoteService
@@ -13,26 +13,24 @@ class PacoteService
 {
 
     /**
-     * @var PacoteRepositoryInterface
+     * @var PacoteRepositoryEloquent
      */
     private $repository;
 
     /**
      * PacoteService constructor.
-     * @param PacoteRepositoryInterface $repository
+     * @param PacoteRepositoryEloquent $repository
      */
-    public function __construct(PacoteRepositoryInterface $repository)
+    public function __construct(PacoteRepositoryEloquent $repository)
     {
-
         $this->repository = $repository;
     }
 
     /**
      * @return array
      */
-    public function searchAllPacotes()
+    public function indexService()
     {
-
         $pacotes = $this->repository->searchPacotes();
 
         if (count($pacotes) > 0) {
@@ -44,13 +42,16 @@ class PacoteService
 
     public function showPacote($id)
     {
-
         return $this->repository->searchPacote($id);
     }
 
     public function storePacote(Request $request)
     {
-
         return $this->repository->createPacote($request);
+    }
+
+    public function editService(Request $request, int $id)
+    {
+        return $this->repository->editPacote($id, $request);
     }
 }
