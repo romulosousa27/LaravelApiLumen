@@ -18,7 +18,7 @@ $factory->define(Pacote::class, function (Faker\Generator $faker) {
         'description' => $faker->text(100),
         'price' => $faker->randomFloat(2,2,2),
         'image' => $faker->imageUrl(),
-        'site' => $faker->email,
+        'site' => $faker->url,
         'phone' => $faker->phoneNumber,
         'date_start' => $faker->date(),
         'date_end' => $faker->date(),
