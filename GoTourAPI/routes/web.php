@@ -11,12 +11,15 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
+// $router->get('/', function () use ($router) {
+//     return $router->app->version();
+// });
+
+$router->get('/key', function() {
+    return str_random(32);
 });
 
-
-$router->get('/pacotes','PacoteController@index');
+$router->get('/','PacoteController@index');
 $router->get('/pacotes/{id}/detail', 'PacoteController@details');
 $router->get('/pacote/{id}' , 'PacoteController@show');
 $router->post('/pacote' , 'PacoteController@store');
