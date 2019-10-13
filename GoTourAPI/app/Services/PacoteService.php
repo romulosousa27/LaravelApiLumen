@@ -97,7 +97,7 @@ class PacoteService
         $validate = Validator::make(
             $request->all(),
             ValidatePacote::RULES,
-            ValidatePacote::MESSAGES,
+            ValidatePacote::MESSAGES
         );
 
         try {
